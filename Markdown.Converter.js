@@ -41,7 +41,7 @@ else
 //
 //   var text = "Markdown *rocks*.";
 //
-//   var converter = new Markdown.Converter();
+//   var converter = new Markdown.Converter(autolink); // where autolink is true or false, defaults to false
 //   var html = converter.makeHtml(text);
 //
 //   alert(html);
