@@ -18,7 +18,7 @@ branch `fontawesome4` (soon v3.0):
 
 > NB : FontAwesome compatibility lacks 2 icons :  `icon-header` and `icon-hr-line`
 
-A demo is viewable here: http://samwillis.co.uk/pagedown-bootstrap/demo/browser/demo.html
+A demo is included in the repository.
 
 Original Documentation
 ---
