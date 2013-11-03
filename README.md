@@ -10,7 +10,7 @@ tag [v2.0](https://github.com/tchapi/pagedown-bootstrap/releases/tag/v2.0) :
   - compatibility with [FontAwesome 3.1](https://github.com/FortAwesome/Font-Awesome)
   - compatibility with bootstrap's new insert strategy for tooltips (2.3)
 
-branch `fontawesome4` (soon v3.0):
+tag [v3.0](https://github.com/tchapi/pagedown-bootstrap/releases/tag/v3.0) :
 
   - compatibility with [FontAwesome 4.0](https://github.com/FortAwesome/Font-Awesome)
   - compatibility with [bootstrap 3](http://getbootstrap.com/)
