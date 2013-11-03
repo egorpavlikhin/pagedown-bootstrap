@@ -2,10 +2,19 @@ PageDown-Bootstrap
 ==================
 
 This is a fork of https://github.com/samwillis/pagedown-bootstrap, adding :
+  
+  - "autolink" as an option (to respect Markdown syntax)
+
+tag [v2.0](https://github.com/tchapi/pagedown-bootstrap/releases/tag/v2.0) :
 
   - compatibility with [FontAwesome 3.1](https://github.com/FortAwesome/Font-Awesome)
-  - compatibility with bootstrap's new insert strategy for tooltips
-  - "autolink" as an option (to respect Markdown syntax)
+  - compatibility with bootstrap's new insert strategy for tooltips (2.3)
+
+branch `fontawesome4` (soon v3.0):
+
+  - compatibility with [FontAwesome 4.0](https://github.com/FortAwesome/Font-Awesome)
+  - compatibility with [bootstrap 3](http://getbootstrap.com/)
+
 
 > NB : FontAwesome compatibility lacks 2 icons :  `icon-header` and `icon-hr-line`
 
