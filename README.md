@@ -122,7 +122,7 @@ The file adds the property Markdown.Editor, which is a constructor taking up to 
 
   - The second argument is optional, and is usually only necessary if you're using several editors within the same page. If given, this argument is a string, appended to the HTML element ids of the three elements used by the editor. 
 
-  - By default, the editor looks for #wmd-button-bar, #wmd-input, and #wmd-preview. If you're using more than one editor, you of course can't give the second group of elements the same ids as the first, so you may create the second input box as <textarea id="wmd-input-2"> and pass the string "-2" as the second argument to the constructor. 
+  - By default, the editor looks for #wmd-button-bar, #wmd-input, and #wmd-preview. If you're using more than one editor, you of course can't give the second group of elements the same ids as the first, so you may create the second input box as ```<textarea id="wmd-input-2">``` and pass the string "-2" as the second argument to the constructor. 
 
   - The third argument is optional as well, and if given, is an object containing information about the "Help" button offered to the user. The object needs a handler property, which will be the onclick handler of the help button. It can also have a title property, which is then set as the tooltip (i.e. title attribute) of the help button. If not given, the title defaults to "Markdown Editing Help". 
 
