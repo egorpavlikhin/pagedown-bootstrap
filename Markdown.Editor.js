@@ -1391,8 +1391,8 @@
             buttons.ulist = makeButton("wmd-ulist-button", "Bulleted List - Ctrl+U", "fa fa-list-ul", bindCommand(function (chunk, postProcessing) {
                 this.doList(chunk, postProcessing, false);
             }), group3);
-            buttons.heading = makeButton("wmd-heading-button", "Heading - Ctrl+H", "icon-header", bindCommand("doHeading"), group3);
-            buttons.hr = makeButton("wmd-hr-button", "Horizontal Rule - Ctrl+R", "icon-hr-line", bindCommand("doHorizontalRule"), group3);
+            buttons.heading = makeButton("wmd-heading-button", "Heading - Ctrl+H", "fa-header", bindCommand("doHeading"), group3);
+            buttons.hr = makeButton("wmd-hr-button", "Horizontal Rule - Ctrl+R", "fa-minus", bindCommand("doHorizontalRule"), group3);
             
             group4 = makeGroup(4);
             buttons.undo = makeButton("wmd-undo-button", "Undo - Ctrl+Z", "fa fa-undo", null, group4);
