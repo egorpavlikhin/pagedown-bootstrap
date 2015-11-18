@@ -103,9 +103,28 @@ else
 
     Markdown.Converter = function (autolink) {
         var pluginHooks = this.hooks = new HookCollection();
-        pluginHooks.addNoop("plainLinkText");  // given a URL that was encountered by itself (without markup), should return the link text that's to be given to this link
-        pluginHooks.addNoop("preConversion");  // called with the orignal text as given to makeHtml. The result of this plugin hook is the actual markdown source that will be cooked
-        pluginHooks.addNoop("postConversion"); // called with the final cooked HTML code. The result of this plugin hook is the actual output of makeHtml
+        
+        // given a URL that was encountered by itself (without markup), should return the link text that's to be given to this link
+        pluginHooks.addNoop("plainLinkText");
+        
+        // called with the orignal text as given to makeHtml. The result of this plugin hook is the actual markdown source that will be cooked
+        pluginHooks.addNoop("preConversion");
+        
+        // called with the text once all normalizations have been completed (tabs to spaces, line endings, etc.), but before any conversions have
+        pluginHooks.addNoop("postNormalization");
+        
+        // Called with the text before / after creating block elements like code blocks and lists. Note that this is called recursively
+        // with inner content, e.g. it's called with the full text, and then only with the content of a blockquote. The inner
+        // call will receive outdented text.
+        pluginHooks.addNoop("preBlockGamut");
+        pluginHooks.addNoop("postBlockGamut");
+        
+        // called with the text of a single block element before / after the span-level conversions (bold, code spans, etc.) have been made
+        pluginHooks.addNoop("preSpanGamut");
+        pluginHooks.addNoop("postSpanGamut");
+        
+        // called with the final cooked HTML code. The result of this plugin hook is the actual output of makeHtml
+        pluginHooks.addNoop("postConversion");
 
         //
         // Private state of the converter instance:
@@ -171,6 +190,8 @@ else
             // match consecutive blank lines with /\n+/ instead of something
             // contorted like /[ \t]*\n+/ .
             text = text.replace(/^[ \t]+$/mg, "");
+            
+            text = pluginHooks.postNormalization(text);
 
             // Turn block-level HTML blocks into hash entries
             text = _HashHTMLBlocks(text);
@@ -387,6 +408,9 @@ else
             // These are all the transformations that form block-level
             // tags like paragraphs, headers, and list items.
             //
+            
+            text = pluginHooks.preBlockGamut(text, blockGamutHookCallback);
+            
             text = _DoHeaders(text);
 
             // Do Horizontal Rules:
@@ -398,6 +422,8 @@ else
             text = _DoLists(text);
             text = _DoCodeBlocks(text);
             text = _DoBlockQuotes(text);
+            
+            text = pluginHooks.postBlockGamut(text, blockGamutHookCallback);
 
             // We already ran _HashHTMLBlocks() before, in Markdown(), but that
             // was to escape raw HTML in the original Markdown source. This time,
@@ -414,6 +440,8 @@ else
             // These are all the transformations that occur *within* block-level
             // tags like paragraphs, headers, and list items.
             //
+            
+            text = pluginHooks.preSpanGamut(text);
 
             text = _DoCodeSpans(text);
             text = _EscapeSpecialCharsWithinTagAttributes(text);
@@ -438,6 +466,8 @@ else
 
             // Do hard breaks:
             text = text.replace(/  +\n/g, " <br>\n");
+            
+            text = pluginHooks.postSpanGamut(text);
 
             return text;
         }
