@@ -402,6 +402,8 @@ else
 
             return blockText;
         }
+        
+        var blockGamutHookCallback = function (t) { return _RunBlockGamut(t); }
 
         function _RunBlockGamut(text, doNotUnhash) {
             //
